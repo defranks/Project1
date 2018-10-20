@@ -5,28 +5,28 @@ from datetime import date
 
 
 def getData(file):
-input = open(file, "r")
-input1 = input.readlines()[1:]
-input.close()
-lis = []
+	input = open(file, "r")
+	input1 = input.readlines()[1:]
+	input.close()
+	lis = []
 
 
-for line in input1:
-	dict = {}
-	values = line.split(",")
-	firstname = values[0]
-	lastname = values[1]
-	email = values[2]
-	claass = values[3]
-	dob = values[4]
-	dict['first name'] = firstname
-	dict['last name'] = lastname
-	dict['email'] = email
-	dict['class'] = claass
-	dict['date of birth'] = dob
-	lis.append(dict)
+	for line in input1:
+		dict = {}
+		values = line.split(",")
+		firstname = values[0]
+		lastname = values[1]
+		email = values[2]
+		claass = values[3]
+		dob = values[4]
+		dict['first name'] = firstname
+		dict['last name'] = lastname
+		dict['email'] = email
+		dict['class'] = claass
+		dict['date of birth'] = dob
+		lis.append(dict)
 
-	return lis
+		return lis
 
 	pass
 
