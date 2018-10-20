@@ -62,10 +62,13 @@ def classSizes(data):
 			soph = soph + 1
 		elif x["Class"] == 'Freshman':
 			fresh = fresh + 1
-	print(senior)
-	print(junior)
-	print(soph)
-	print(fresh)
+	snr = ("Senior", senior)
+	jnr = ("Junior", junior)
+	sph = ("Sophomore", soph)
+	frs = ("Freshman", fresh)
+	list = [snr, jnr, sph, frs]
+	sorted_list = sorted(list, key = lambda x: x[1], reverse = True)
+	return sorted_list
 # [('Senior', 26), ('Junior', 25), ('Freshman', 21), ('Sophomore', 18)]
 
 	pass
