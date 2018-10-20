@@ -12,6 +12,7 @@ def getData(file):
 
 
 	for line in input1:
+
 		dict = {}
 		values = line.split(",")
 		firstname = values[0]
@@ -19,15 +20,14 @@ def getData(file):
 		email = values[2]
 		claass = values[3]
 		dob = values[4]
-		dict['first name'] = firstname
-		dict['last name'] = lastname
-		dict['email'] = email
-		dict['class'] = claass
-		dict['date of birth'] = dob
+		dict['First'] = firstname
+		dict['Last'] = lastname
+		dict['Email'] = email
+		dict['Class'] = claass
+		dict['DOB'] = dob
 		lis.append(dict)
 
-		return lis
-
+	return lis
 	pass
 
 def mySort(data,col):
@@ -35,6 +35,12 @@ def mySort(data,col):
 #Input: list of dictionaries and col (key) to sort on
 #Output: Return the first item in the sorted list as a string of just: firstName lastName
 
+	newlist = sorted(data, key = lambda x: x[col])
+	dictionary = newlist[0]
+	first_name = dictionary["First"]
+	last_name = dictionary["Last"]
+	end_result = str(first_name + " " +  last_name)
+	return end_result
 	pass
 
 
@@ -43,6 +49,23 @@ def classSizes(data):
 # Input: list of dictionaries
 # Output: Return a list of tuples sorted by the number of students in that class in
 # descending order
+	senior = 0
+	junior = 0
+	soph = 0
+	fresh = 0
+	for x in data:
+		if x["Class"] == 'Senior':
+			senior = senior + 1
+		elif x["Class"] == 'Junior':
+			junior = junior + 1
+		elif x["Class"] == 'Sophomore':
+			soph = soph + 1
+		elif x["Class"] == 'Freshman':
+			fresh = fresh + 1
+	print(senior)
+	print(junior)
+	print(soph)
+	print(fresh)
 # [('Senior', 26), ('Junior', 25), ('Freshman', 21), ('Sophomore', 18)]
 
 	pass
