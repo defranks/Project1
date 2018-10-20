@@ -5,10 +5,28 @@ from datetime import date
 
 
 def getData(file):
-# get a list of dictionary objects from the file
-#Input: file name
-#Ouput: return a list of dictionary objects where
-#the keys are from the first row in the data. and the values are each of the other rows
+input = open(file, "r")
+input1 = input.readlines()[1:]
+input.close()
+lis = []
+
+
+for line in input1:
+	dict = {}
+	values = line.split(",")
+	firstname = values[0]
+	lastname = values[1]
+	email = values[2]
+	claass = values[3]
+	dob = values[4]
+	dict['first name'] = firstname
+	dict['last name'] = lastname
+	dict['email'] = email
+	dict['class'] = claass
+	dict['date of birth'] = dob
+	lis.append(dict)
+
+	return lis
 
 	pass
 
