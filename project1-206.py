@@ -2,7 +2,7 @@ import os
 import filecmp
 from dateutil.relativedelta import *
 from datetime import date
-
+today_date = date.today()
 
 def getData(file):
 	input = open(file, "r")
@@ -84,17 +84,19 @@ def findMonth(a):
 		z = x['DOB']
 		r = z.split("/")
 		list.append(r[0])
-	mode = max(list, key=list.count)
+	mode = max(set(list), key=list.count)
+	print(list)
+	print(mode)
 	return int(mode)
+
 	pass
 
 def mySortPrint(a,col,fileName):
 	outfile = open(fileName, 'w')
-	newlist = sorted(a[1:], key = lambda x: x[col])
+	newlist = sorted(a[0:], key = lambda x: x[col])
 	for x in newlist:
 		student_info = x['First'] + ',' + x['Last'] + ',' + x['Email']
 		outfile.write(student_info + '\n')
-
 	outfile.close()
 #Similar to mySort, but instead of returning single
 #Student, the sorted data is saved to a csv file.
@@ -105,6 +107,23 @@ def mySortPrint(a,col,fileName):
 	pass
 
 def findAge(a):
+
+	list = []
+	number_students = len(a) - 1
+
+	currentyear = int(today_date.year)
+	print(currentyear)
+
+	for x in a[1:]:
+		z = x['DOB']
+		dob = z.split("/")
+		student_year = int(dob[2])
+		sub = currentyear - student_year
+		list.append(sub)
+	ages = sum(list)
+
+	avg = round(ages / number_students)
+	return avg
 
 # Input: list of dictionaries
 # Output: Return the average age of the students and round that age to the nearest
@@ -135,7 +154,7 @@ def main():
 	total = 0
 	print("Read in Test data and store as a list of dictionaries")
 	data = getData('P1DataA.csv')
-	data2 = getData('P1DataB.csv')
+	data2 = getData('P1DataB2.csv')
 	total += test(type(data),type([]),50)
 
 	print()
